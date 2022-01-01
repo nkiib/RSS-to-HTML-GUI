@@ -34,7 +34,7 @@ while True:
                 f1.write( str1 ) 
             return 0 
 
-        print( time )
+        
 
         str1 = '''
         <html>

@@ -34,9 +34,6 @@ while True:
                 f1.write( str1 ) 
             return 0 
 
-        dt = datetime.datetime.today()
-        day = dt.date()
-
         str1 = '''
         <html>
         <head>

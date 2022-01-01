@@ -47,7 +47,7 @@ while True:
         </html>
         '''.format( title1 = "output", body1 = outx ) 
 
-        print( str1 ) 
+        #print( str1 ) 
 
         path1 = os.path.dirname(__file__) + "/" 
         file1 = path1 + values[1] + ".html"

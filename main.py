@@ -19,8 +19,7 @@ while True:
     elif event == 'OK':
         import os
         import feedparser
-        import datetime
-        
+                
         rssurl= values[0]
         d = feedparser.parse(rssurl)
         outx = ""

@@ -32,7 +32,7 @@ while True:
         d = feedparser.parse(rssurl)
         outx = ""
 
-        if '-1-' == True:
+        if values['-1-'] == True: ## HTML
             
             for entry in d['entries']:
                 outx += '<a href="'+ entry.link + '">' + entry.title + "</a><br>"
@@ -63,5 +63,37 @@ while True:
             file1 = path1 + values[1] + ".html"
             write1( file1, str1 ) 
             print(values)
+
+        elif values==['-2-']: # TXT
+            for entry in d['entries']:
+                outx += '<a href="'+ entry.link + '">' + entry.title + "</a><br>"
+                outx += entry.published + "<br><br>"
+
+            def write1( file1, str1 ): 
+                with open( file1, 'w', encoding='utf-8' ) as f1: 
+                    f1.write( str1 ) 
+                return 0 
+
+            
+
+            str1 = '''
+            <html>
+            <head>
+            <meta charset="utf-8">
+            <title>{title1}</title>
+            </head>
+            <body>
+            {body1} 
+            </body>
+            </html>
+            '''.format( title1 = "output", body1 = outx ) 
+
+            #print( str1 ) 
+
+            path1 = os.path.dirname(__file__) + "/" 
+            file1 = path1 + values[1] + ".html"
+            write1( file1, str1 ) 
+            print(values)
+
         
 window.close()

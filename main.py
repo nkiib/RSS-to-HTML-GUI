@@ -65,7 +65,7 @@ while True:
             print(values)
 
         elif values==['-2-']: # TXT
-            for entry in d['entries']:
+            """for entry in d['entries']:
                 outx += '<a href="'+ entry.link + '">' + entry.title + "</a><br>"
                 outx += entry.published + "<br><br>"
 
@@ -93,7 +93,13 @@ while True:
             path1 = os.path.dirname(__file__) + "/" 
             file1 = path1 + values[1] + ".html"
             write1( file1, str1 ) 
-            print(values)
+            print(values)"""
+        print('-2-に到達')
+    elif values['-3-'] == True:
+        print('-3-に到達')
+    elif values['-4-'] == True:
+        print('-4-に到達')
+
 
         
 window.close()

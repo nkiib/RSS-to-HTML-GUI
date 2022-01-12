@@ -96,10 +96,10 @@ while True:
             print(values)"""
             print('-2-に到達')
             print(values)
-        elif values['-3-'] == True:
+        elif values['-3-'] == True: # CSV
             print('-3-に到達')
             print(values)
-        elif values['-4-'] == True:
+        elif values['-4-'] == True: # XML
             print('-4-に到達')
             print(values)
 

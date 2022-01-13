@@ -20,6 +20,18 @@ layout = [  [sg.Text('RSSからHTMLを出力するジェネレーター')],
 window = sg.Window('Tlooks RSS to file', layout,font=('Arial',20))
 
 # イベントループ
+def output(values, write1, str1 ,filetype):
+    path1 = os.path.dirname(__file__) + "/" 
+    file1 = path1 + values[1] + filetype
+    write1( file1, str1 ) 
+    print(values)
+    print(path1 + ' に '+ values[1]+ filetype + ' を出力')
+
+def write1( file1, str1 ): 
+    with open( file1, 'w', encoding='utf-8' ) as f1: 
+        f1.write( str1 ) 
+    return 0     
+
 while True:
     event, values = window.read()
     if event == sg.WIN_CLOSED or event == 'キャンセル':
@@ -32,67 +44,46 @@ while True:
         d = feedparser.parse(rssurl)
         outx = ""
 
-        if values['-1-'] == True: ## HTML
             
+
+        if values['-1-'] == True: ## HTML
+            filetype = ".html"
             for entry in d['entries']:
                 outx += '<a href="'+ entry.link + '">' + entry.title + "</a><br>"
                 outx += entry.published + "<br><br>"
 
-            def write1( file1, str1 ): 
-                with open( file1, 'w', encoding='utf-8' ) as f1: 
-                    f1.write( str1 ) 
-                return 0 
-
-            
-
             str1 = '''
             <html>
-            <head>
-            <meta charset="utf-8">
-            <title>{title1}</title>
-            </head>
-            <body>
-            {body1} 
-            </body>
-            </html>
-            '''.format( title1 = "output", body1 = outx ) 
-
-            #print( str1 ) 
-
-            path1 = os.path.dirname(__file__) + "/" 
-            file1 = path1 + values[1] + ".html"
-            write1( file1, str1 ) 
-            print(values)
+                <head>
+                    <meta charset="utf-8">
+                    <title>{title1}</title>
+                </head>
+                <body>
+                    {body1} 
+                </body>
+            </html>'''.format( title1 = "output", body1 = outx ) 
+        
+            output(values, write1, str1 ,filetype) # 出力
+        
 
         elif values['-2-']== True: # TXT
+            filetype = ".txt"
             for entry in d['entries']:
                 outx += entry.title + '\n' + 'link : '+ entry.link + '\n' 
                 outx += entry.published + '\n' + '\n'
 
-            def write1( file1, str1 ): 
-                with open( file1, 'w', encoding='utf-8' ) as f1: 
-                    f1.write( str1 ) 
-                return 0 
-
-            
-
             str1 = '''{body1}'''.format( title1 = "output", body1 = outx ) 
+            output(values, write1, str1 ,filetype)
+        
 
-            print(outx)
-
-            #print( str1 ) 
-
-            path1 = os.path.dirname(__file__) + "/" 
-            file1 = path1 + values[1] + ".txt"
-            write1( file1, str1 ) 
-            print(values)
-            print('-2-に到達')
         elif values['-3-'] == True: # CSV
             print('-3-に到達')
-            print(values)
+            print(values) # 未実装
+        
+        
         elif values['-4-'] == True: # XML
             print('-4-に到達')
-            print(values)
+            print(values) # 未実装
 
 
         

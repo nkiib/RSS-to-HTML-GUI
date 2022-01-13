@@ -1,0 +1,77 @@
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ja">
+  <title>Nishiki-Hub</title>
+  
+  <subtitle>国内外のPC/PCパーツ/スマホ/Appleなどの最新情報を取り上げています</subtitle>
+  
+  <link href="https://nishikiout.hatenablog.com/"/>
+  <updated>2022-01-13T04:25:53+09:00</updated>
+  <author>
+    <name>doskokimeil127-dosd</name>
+  </author>
+  <generator uri="https://blog.hatena.ne.jp/" version="b2d312d15e4fbec6f89b69903c175b9c">Hatena::Blog</generator>
+  <id>hatenablog://blog/10328749687213121790</id>
+
+
+   
+    <entry>
+        <title>テストコンテンツ1</title>
+        <link href="http://nishikiout.ml/"/>
+        <id>nishikiout://0001</id>
+        <published>2022-01-13T04:25:53+09:00</published>
+        <updated>2022-01-13T04:27:47+09:00</updated>        <summary type="html">サマリーコンテンツ1</summary>
+        <content type="html">
+        テストコンテンツ1 中身
+</content>        
+        <category term="iOS/iPadOS" label="iOS/iPadOS" />
+        
+        <link rel="enclosure" href="https://cdn-ak.f.st-hatena.com/images/fotolife/d/doskokimeil127-dosd/20220113/20220113041713.jpg" type="image/jpeg" length="0" />
+
+        <author>
+            <name>doskokimeil127-dosd</name>
+        </author>
+    </entry>
+    
+  
+    
+    <entry>
+        <title>テストコンテンツ2</title>
+        <link href="http://nishikiout.ml/"/>
+        <id>nishikiout://0001</id>
+        <published>2022-01-13T04:25:53+09:00</published>
+        <updated>2022-01-13T04:27:47+09:00</updated>        <summary type="html">サマリーコンテンツ1</summary>
+        <content type="html">
+        テストコンテンツ2 中身
+</content>        
+        <category term="iOS/iPadOS" label="iOS/iPadOS" />
+        
+        <link rel="enclosure" href="https://cdn-ak.f.st-hatena.com/images/fotolife/d/doskokimeil127-dosd/20220113/20220113041713.jpg" type="image/jpeg" length="0" />
+
+        <author>
+            <name>doskokimeil127-dosd</name>
+        </author>
+    </entry>
+
+   
+    <entry>
+        <title>テストコンテンツ3</title>
+        <link href="http://nishikiout.ml/"/>
+        <id>nishikiout://0001</id>
+        <published>2022-01-13T04:25:53+09:00</published>
+        <updated>2022-01-13T04:27:47+09:00</updated>        <summary type="html">サマリーコンテンツ3</summary>
+        <content type="html">
+        テストコンテンツ3 中身
+</content>        
+        <category term="iOS/iPadOS" label="iOS/iPadOS" />
+        
+        <link rel="enclosure" href="https://cdn-ak.f.st-hatena.com/images/fotolife/d/doskokimeil127-dosd/20220113/20220113041713.jpg" type="image/jpeg" length="0" />
+
+        <author>
+            <name>doskokimeil127-dosd</name>
+        </author>
+    </entry>
+    
+  
+
+</feed>
+    
+  

@@ -65,9 +65,9 @@ while True:
             print(values)
 
         elif values['-2-']== True: # TXT
-            """for entry in d['entries']:
-                outx += '<a href="'+ entry.link + '">' + entry.title + "</a><br>"
-                outx += entry.published + "<br><br>"
+            for entry in d['entries']:
+                outx += entry.title + '\n' + 'link : '+ entry.link + '\n' 
+                outx += entry.published + '\n' + '\n'
 
             def write1( file1, str1 ): 
                 with open( file1, 'w', encoding='utf-8' ) as f1: 
@@ -76,26 +76,17 @@ while True:
 
             
 
-            str1 = '''
-            <html>
-            <head>
-            <meta charset="utf-8">
-            <title>{title1}</title>
-            </head>
-            <body>
-            {body1} 
-            </body>
-            </html>
-            '''.format( title1 = "output", body1 = outx ) 
+            str1 = '''{body1}'''.format( title1 = "output", body1 = outx ) 
+
+            print(outx)
 
             #print( str1 ) 
 
             path1 = os.path.dirname(__file__) + "/" 
-            file1 = path1 + values[1] + ".html"
+            file1 = path1 + values[1] + ".txt"
             write1( file1, str1 ) 
-            print(values)"""
-            print('-2-に到達')
             print(values)
+            print('-2-に到達')
         elif values['-3-'] == True: # CSV
             print('-3-に到達')
             print(values)

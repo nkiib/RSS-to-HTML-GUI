@@ -36,7 +36,7 @@ while True:
     event, values = window.read()
     if event == sg.WIN_CLOSED or event == 'キャンセル':
         break
-    elif event == 'OK':
+    elif event == 'OK': 
         import os
         import feedparser
                 
@@ -85,6 +85,4 @@ while True:
             print('-4-に到達')
             print(values) # 未実装
 
-
-        
-window.close()
+window.close() # ウィンドウを閉じる（ただし、キャンセル時）

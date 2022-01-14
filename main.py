@@ -44,7 +44,10 @@ while True:
         d = feedparser.parse(rssurl)
         outx = ""
 
-            
+        if 'title' not in d.feed:
+            print('このURLはRSSフィードのものではありません。最初からやり直してください') 
+            import sys
+            sys.exit()            
 
         if values['-1-'] == True: ## HTML
             filetype = ".html"

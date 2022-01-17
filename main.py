@@ -7,14 +7,13 @@ radio_dic = {
     '-1-' : 'HTML',
     '-2-' : 'テキストファイル',
     '-3-' : 'CSV形式',
-    '-4-' : 'XML形式'
 }
 
 layout = [  [sg.Text('RSSからHTMLを出力するジェネレーター')],
             [sg.Text('RSS URL'), sg.InputText()],
             [sg.Text('ファイル名'), sg.InputText()],
             [sg.Radio(item[1], key=item[0], group_id='0') for item in radio_dic.items()],
-            [sg.Button('OK'), sg.Button('キャンセル')] ]
+            [sg.Button('OK'), sg.Button('終了')] ]
 
 # ウィンドウの生成
 window = sg.Window('Tlooks RSS to file', layout,font=('Arial',20))
@@ -34,33 +33,38 @@ def write1( file1, str1 ):
 
 def time_split(date):
     timex = date.split("T")
-    print(timex)
-    return timex     
+    timex2 = timex[1].split("+")
+    datex = timex[0].split("-")
+    publish = datex[0] + "/" + datex[1] + "/" + datex[2] + " " + timex2[0]
+    return publish     
 
 while True:
     event, values = window.read()
-    if event == sg.WIN_CLOSED or event == 'キャンセル':
+    if event == sg.WIN_CLOSED or event == '終了':
         break
     elif event == 'OK': 
         import os
         import feedparser
-                
-        rssurl= values[0]
-        d = feedparser.parse(rssurl)
+
+        # 変数の用意        
+        rssurl= values[0] # URLの取得
+        d = feedparser.parse(rssurl) # URLからRSSを取得
         outx = ""
 
+        # RSSフィードの有効性の確認
         if 'title' not in d.feed:
             print('このURLはRSSフィードのものではありません。最初からやり直してください') 
             import sys
             sys.exit()            
 
+        # 実際の処理部分
         if values['-1-'] == True: ## HTML
             filetype = ".html"
             for entry in d['entries']:
                 outx += '<a href="'+ entry.link + '">' + entry.title + "</a><br>"
-                timey = time_split(entry.published)
-                outx += timey[1] + "<br><br>"
+                outx += time_split(entry.published) + "<br><br>"
 
+            # 出力用の記述
             str1 = '''
             <html>
                 <head>
@@ -79,7 +83,7 @@ while True:
             filetype = ".txt"
             for entry in d['entries']:
                 outx += entry.title + '\n' + 'link : '+ entry.link + '\n' 
-                outx += entry.published + '\n' + '\n'
+                outx += time_split(entry.published) + '\n' + '\n'
 
             str1 = '''{body1}'''.format( title1 = "output", body1 = outx ) 
             output(values, write1, str1 ,filetype)
@@ -87,15 +91,13 @@ while True:
 
         elif values['-3-'] == True: # CSV
             filetype= ".csv"
-            outx += 'タイトル,日付,リンク' + '\n'
+            outx += 'タイトル,日付,時間,リンク' + '\n'
             for entry in d['entries']:
-                outx += entry.title + ',' + entry.published + ',' + entry.link + '\n'
+                date = time_split(entry.published).split(" ")
+                outx += entry.title + ',' + date[0] + ',' + date[1] + ',' + entry.link + '\n'
 
             str1 = '''{body1}'''.format(body1 = outx)
             output(values,write1,str1,filetype)
-        
-        elif values['-4-'] == True: # XML
-            print('-4-に到達')
-            print(values) # 未実装
+
 
 window.close() # ウィンドウを閉じる（ただし、キャンセル時）

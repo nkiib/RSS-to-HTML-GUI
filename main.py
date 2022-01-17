@@ -30,7 +30,12 @@ def output(values, write1, str1 ,filetype):
 def write1( file1, str1 ): 
     with open( file1, 'w', encoding='utf-8' ) as f1: 
         f1.write( str1 ) 
-    return 0     
+    return 0
+
+def time_split(date):
+    timex = date.split("T")
+    print(timex)
+    return timex     
 
 while True:
     event, values = window.read()
@@ -53,7 +58,8 @@ while True:
             filetype = ".html"
             for entry in d['entries']:
                 outx += '<a href="'+ entry.link + '">' + entry.title + "</a><br>"
-                outx += entry.published + "<br><br>"
+                timey = time_split(entry.published)
+                outx += timey[1] + "<br><br>"
 
             str1 = '''
             <html>
@@ -80,9 +86,13 @@ while True:
         
 
         elif values['-3-'] == True: # CSV
-            print('-3-に到達')
-            print(values) # 未実装
-        
+            filetype= ".csv"
+            outx += 'タイトル,日付,リンク' + '\n'
+            for entry in d['entries']:
+                outx += entry.title + ',' + entry.published + ',' + entry.link + '\n'
+
+            str1 = '''{body1}'''.format(body1 = outx)
+            output(values,write1,str1,filetype)
         
         elif values['-4-'] == True: # XML
             print('-4-に到達')

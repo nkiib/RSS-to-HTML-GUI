@@ -86,6 +86,7 @@ while True:
                 outx += time_split(entry.published) + '\n' + '\n'
 
             str1 = '''{body1}'''.format( title1 = "output", body1 = outx ) 
+            
             output(values, write1, str1 ,filetype)
         
 

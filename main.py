@@ -18,26 +18,27 @@ layout = [  [sg.Text('RSSからHTMLを出力するジェネレーター')],
 # ウィンドウの生成
 window = sg.Window('Tlooks RSS to file', layout,font=('Arial',20))
 
-# イベントループ
-def output(values, write1, str1 ,filetype):
+# 処理
+def output(values, write1, str1 ,filetype): # 出力処理
     path1 = os.path.dirname(__file__) + "/" 
     file1 = path1 + values[1] + filetype
     write1( file1, str1 ) 
     print(values)
     print(path1 + ' に '+ values[1]+ filetype + ' を出力')
 
-def write1( file1, str1 ): 
+def write1( file1, str1 ): # ファイルの編集処理
     with open( file1, 'w', encoding='utf-8' ) as f1: 
         f1.write( str1 ) 
     return 0
 
-def time_split(date):
+def time_split(date): # 時間の修正処理
     timex = date.split("T")
     timex2 = timex[1].split("+")
     datex = timex[0].split("-")
     publish = datex[0] + "/" + datex[1] + "/" + datex[2] + " " + timex2[0]
     return publish     
 
+# イベントループ
 while True:
     event, values = window.read()
     if event == sg.WIN_CLOSED or event == '終了':
@@ -86,7 +87,7 @@ while True:
                 outx += time_split(entry.published) + '\n' + '\n'
 
             str1 = '''{body1}'''.format( title1 = "output", body1 = outx ) 
-            
+
             output(values, write1, str1 ,filetype)
         
 

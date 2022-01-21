@@ -19,7 +19,7 @@ layout = [  [sg.Text('RSSからHTMLを出力するジェネレーター')],
 window = sg.Window('Tlooks RSS to file', layout,font=('Arial',20))
 
 # 処理
-def output(values, write1, str1 ,filetype): # 出力処理
+def output(str1 ,filetype): # 出力処理
     path1 = os.path.dirname(__file__) + "/" 
     file1 = path1 + values[1] + filetype
     write1( file1, str1 ) 
@@ -56,7 +56,7 @@ while True:
         if 'title' not in d.feed:
             print('このURLはRSSフィードのものではありません。最初からやり直してください') 
             import sys
-            sys.exit()            
+            sys.exit()
 
         # 実際の処理部分
         if values['-1-'] == True: ## HTML
@@ -77,7 +77,7 @@ while True:
                 </body>
             </html>'''.format( title1 = "output", body1 = outx ) 
         
-            output(values, write1, str1 ,filetype) # 出力
+            output( str1 ,filetype) # 出力
         
 
         elif values['-2-']== True: # TXT
@@ -88,7 +88,7 @@ while True:
 
             str1 = '''{body1}'''.format( title1 = "output", body1 = outx ) 
 
-            output(values, write1, str1 ,filetype)
+            output( str1 ,filetype)
         
 
         elif values['-3-'] == True: # CSV
@@ -99,7 +99,7 @@ while True:
                 outx += entry.title + ',' + date[0] + ',' + date[1] + ',' + entry.link + '\n'
 
             str1 = '''{body1}'''.format(body1 = outx)
-            output(values,write1,str1,filetype)
+            output(str1,filetype)
 
 
 window.close() # ウィンドウを閉じる（ただし、キャンセル時）

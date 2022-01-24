@@ -61,9 +61,11 @@ while True:
         # 実際の処理部分
         if values['-1-'] == True: ## HTML
             filetype = ".html"
+            tt = d.feed.title
             for entry in d['entries']:
                 outx += '<a href="'+ entry.link + '">' + entry.title + "</a><br>"
                 outx += time_split(entry.published) + "<br><br>"
+                
 
             # 出力用の記述
             str1 = '''
@@ -73,9 +75,10 @@ while True:
                     <title>{title1}</title>
                 </head>
                 <body>
+                    <h1>{title2}</h1>
                     {body1} 
                 </body>
-            </html>'''.format( title1 = "output", body1 = outx ) 
+            </html>'''.format( title1 = "output", title2 = tt , body1 = outx ) 
         
             output( str1 ,filetype) # 出力
         

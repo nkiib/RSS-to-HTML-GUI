@@ -95,4 +95,4 @@ while True:
             output(str1,filetype)
 
 
-window.close() # ウィンドウを閉じる（ただし、キャンセル時）
+window.close() # ウィンドウを閉じる（ただし、キャンセル時に実行）

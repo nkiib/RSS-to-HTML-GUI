@@ -31,13 +31,6 @@ def write1( file1, str1 ): # ファイルの編集処理
         f1.write( str1 ) 
     return 0
 
-def time_split(date): # 時間の修正処理
-    timex = date.split("T")
-    timex2 = timex[1].split("+")
-    datex = timex[0].split("-")
-    publish = datex[0] + "/" + datex[1] + "/" + datex[2] + " " + timex2[0]
-    return publish     
-
 # イベントループ
 while True:
     event, values = window.read()
@@ -63,7 +56,7 @@ while True:
             filetype = ".html"
             for entry in d['entries']:
                 outx += '<a href="'+ entry.link + '">' + entry.title + "</a><br>"
-                outx += time_split(entry.published) + "<br><br>"
+                outx += entry.published + "<br><br>"
 
             # 出力用の記述
             str1 = '''
@@ -84,7 +77,7 @@ while True:
             filetype = ".txt"
             for entry in d['entries']:
                 outx += entry.title + '\n' + 'link : '+ entry.link + '\n' 
-                outx += time_split(entry.published) + '\n' + '\n'
+                outx += entry.published + '\n' + '\n'
 
             str1 = '''{body1}'''.format( title1 = "output", body1 = outx ) 
 
@@ -95,7 +88,7 @@ while True:
             filetype= ".csv"
             outx += 'タイトル,日付,時間,リンク' + '\n'
             for entry in d['entries']:
-                date = time_split(entry.published).split(" ")
+                date = entry.published.split(" ")
                 outx += entry.title + ',' + date[0] + ',' + date[1] + ',' + entry.link + '\n'
 
             str1 = '''{body1}'''.format(body1 = outx)
